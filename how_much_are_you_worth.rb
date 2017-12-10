@@ -1,16 +1,13 @@
 # How Much Are You Worth?
 # Have you ever wondered how much you would sell for if you were split up into your individual elements? Well, now you can!
 
-# print "How much do you weigh? "
-# weightLBS = gets.chomp.to_i
+print "How much do you weigh? "
+weightLBS = gets.chomp.to_i
 
-# elements = Hash.new
-
-elements = {o: {price: 0.30}}
+elements = Hash.new
 price = {o: 0.30, c: 2.40, h: 12.00, n: 0.40, ca: 11.00, p: 4.00, k: 85.00, s: 0.25, na: 7.00, cl: 0.15}
 total = []
 
-=begin
 weightKGS = weightLBS * 0.4536
 weightGMS = weightKGS * 1000
 
@@ -35,6 +32,3 @@ total.each do |value|
 end
 
 puts cost
-=end
-
-p elements[:o[:price]]
