@@ -1,5 +1,5 @@
 class Array
-    def total # Returns the total number of something in an array
+    def total # A way to get the total of an array's numbers
         cost = 0
         self.each do |value|
             cost += value
