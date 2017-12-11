@@ -1,19 +1,14 @@
 # How Much Are You Worth?
 # Have you ever wondered how much you would sell for if you were split up into your individual elements? Well, now you can!
 
-class Element
-	def initialize(price, ammount)
-		@price = price
-		@ammount = ammount
-	end
-
-	def price
-		@price
-	end
-
-	def ammount
-		@ammount
-	end
+class Array
+    def total # A way to get the total of an array's numbers
+        cost = 0
+        self.each do |value|
+            cost += value
+        end
+        cost
+    end
 end
 
 print "How much do you weigh? "
@@ -41,9 +36,4 @@ elements.each do |element, value|
 	total.push(value * price[element])
 end
 
-cost = 0
-total.each do |value|
-	cost += value
-end
-
-puts cost
+puts "You are worth: $#{total.total.round(2)}"
