@@ -1,6 +1,21 @@
 # How Much Are You Worth?
 # Have you ever wondered how much you would sell for if you were split up into your individual elements? Well, now you can!
 
+class Element
+	def initialize(price, ammount)
+		@price = price
+		@ammount = ammount
+	end
+
+	def price
+		@price
+	end
+
+	def ammount
+		@ammount
+	end
+end
+
 print "How much do you weigh? "
 weightLBS = gets.chomp.to_i
 
