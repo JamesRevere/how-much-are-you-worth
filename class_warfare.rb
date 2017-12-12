@@ -17,7 +17,7 @@ class Element
         # Coerce both inputs into floats
         @symbol = symbol
         @price = price.to_f
-        @amount = amount.to_f
+        @amount = ammount.to_f
     end
 end
 
@@ -38,6 +38,9 @@ p ELEMENTS
 
 price = {o: 0.30, c: 2.40, h: 12.00, n: 0.40, ca: 11.00, p: 4.00, k: 85.00, s: 0.25, na: 7.00, cl: 0.15}
 
+ELEMENTS.each do |element|
+    puts "#{element.symbol} has a price of #{element.price} and a reletive abondance of #{element.amount}"
+end
 =begin
     o = Element.new(0.30, 0.65)
     c = Element.new(2.40, 0.18)
