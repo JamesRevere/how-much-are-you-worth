@@ -34,4 +34,4 @@ total.each do |value|
 	cost += value
 end
 
-puts cost
+puts "You are worth: $#{cost.round(2)}"
