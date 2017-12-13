@@ -25,6 +25,7 @@ class Element
 	end
 end
 
+
 o = Element.new(0.30, 0.65)
 c = Element.new(2.40, 0.18)
 h = Element.new(12, 0.10)
@@ -36,30 +37,30 @@ s = Element.new(0.25, 0.0025)
 cl = Element.new(0.15, 0.0015)
 na = Element.new(7, 0.0015)
 
-weightLBS = ARGV[0].to_i
-
-if weightLBS == 0
+# Gets the input
+pounds = ARGV[0].to_i
+if pounds == 0
 	print "How much do you weigh? "
-	weightLBS = gets.chomp.to_i
+	pounds = gets.chomp.to_i
 end
 
 elements = Hash.new
 price = {o: 0.30, c: 2.40, h: 12.00, n: 0.40, ca: 11.00, p: 4.00, k: 85.00, s: 0.25, na: 7.00, cl: 0.15}
 total = []
 
-weightKGS = weightLBS * 0.4536
-weightGMS = weightKGS * 1000
+grams = pounds * 0.4536 * 1000
 
-elements[:o] = o.quantity_init(weightGMS)
-elements[:c] = c.quantity_init(weightGMS)
-elements[:h] = h.quantity_init(weightGMS)
-elements[:n] = n.quantity_init(weightGMS)
-elements[:ca] = ca.quantity_init(weightGMS)
-elements[:p] = p.quantity_init(weightGMS)
-elements[:k] = k.quantity_init(weightGMS)
-elements[:s] = s.quantity_init(weightGMS)
-elements[:cl] = cl.quantity_init(weightGMS)
-elements[:na] = na.quantity_init(weightGMS)
+
+elements[:o] = o.quantity_init(grams)
+elements[:c] = c.quantity_init(grams)
+elements[:h] = h.quantity_init(grams)
+elements[:n] = n.quantity_init(grams)
+elements[:ca] = ca.quantity_init(grams)
+elements[:p] = p.quantity_init(grams)
+elements[:k] = k.quantity_init(grams)
+elements[:s] = s.quantity_init(grams)
+elements[:cl] = cl.quantity_init(grams)
+elements[:na] = na.quantity_init(grams)
 
 elements.each do |element, value|
 	value /= 100
