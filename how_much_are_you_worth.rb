@@ -49,21 +49,7 @@ if pounds == 0 # If input wasn't provided via the CLI
 	pounds = gets.chomp.to_i
 end
 
-
-# Declares all the useless things that should be replaced
-elements = Hash.new
-price = {o: 0.30, c: 2.40, h: 12.00, n: 0.40, ca: 11.00, p: 4.00, k: 85.00, s: 0.25, na: 7.00, cl: 0.15}
-total = []
-
-
 grams = pounds * 0.4536 * 1000 # Converts pounds to grams
-
-
-elements.each do |element, value|
-	value /= 100
-	total.push(value * price[element])
-end
-
 
 total = ELEMENTS.map do |element|
 	element.price * element.ammount * (grams/100)
