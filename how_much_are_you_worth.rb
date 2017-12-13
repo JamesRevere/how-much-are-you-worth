@@ -1,37 +1,47 @@
 # How Much Are You Worth?
 # Have you ever wondered how much you would sell for if you were split up into your individual elements? Well, now you can!
 
-weightLBS = ARGV[0].to_i
-if weightLBS == 0
+class Element
+	attr_reader :symbol
+    attr_reader :price # The price of the element
+    attr_reader :ammount # What percentage of the element is in your body.
+
+	def initialize(symbol, price, ammount)
+        # Coerce both inputs into floats
+        @symbol = symbol.to_s
+        @price = price.to_f
+        @ammount = ammount.to_f
+	end
+end
+
+# Sets up the elements
+ELEMENTS = [
+    Element.new('O', 0.30, 0.65),
+    Element.new('C', 2.40, 0.18),
+    Element.new('H', 12, 0.10),
+    Element.new('N', 0.40, 0.03),
+    Element.new('Ca', 11, 0.015),
+    Element.new('P', 4, 0.01),
+    Element.new('K', 85, 0.0035),
+    Element.new('S', 0.25, 0.0025),
+    Element.new('Cl', 0.15, 0.0015),
+    Element.new('Na', 7, 0.0015)
+]
+
+# Gets the input
+pounds = ARGV[0].to_i
+if pounds == 0 # If input wasn't provided via the CLI
 	print "How much do you weigh? "
-	weightLBS = gets.chomp.to_i
+	pounds = gets.chomp.to_i
 end
 
-elements = Hash.new
-price = {o: 0.30, c: 2.40, h: 12.00, n: 0.40, ca: 11.00, p: 4.00, k: 85.00, s: 0.25, na: 7.00, cl: 0.15}
-total = []
+# Converts pounds to grams
+grams = pounds * 0.4536 * 1000
 
-weightKGS = weightLBS * 0.4536
-weightGMS = weightKGS * 1000
+# Gets how much the element is worth in you for each one
+total = ELEMENTS.map do |element|
+	element.price * element.ammount * (grams/100)
+end.reduce(:+) # Added together
 
-elements[:o] = weightGMS * 0.65
-elements[:c] = weightGMS * 0.18
-elements[:h] = weightGMS * 0.10
-elements[:n] = weightGMS * 0.03
-elements[:ca] = weightGMS * 0.015
-elements[:p] = weightGMS * 0.01
-elements[:k] = weightGMS * 0.0035
-elements[:s] = weightGMS * 0.0025
-elements[:cl] = elements[:na] = weightGMS * 0.0015
-
-elements.each do |element, value|
-	value /= 100
-	total.push(value * price[element])
-end
-
-cost = 0
-total.each do |value|
-	cost += value
-end
-
-puts "You are worth: $#{cost.round(2)}"
+# Puts the result
+puts "You are worth: $#{total.round(2)}"
