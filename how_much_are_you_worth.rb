@@ -49,9 +49,10 @@ if pounds == 0 # If input wasn't provided via the CLI
 	pounds = gets.chomp.to_i
 end
 
-grams = pounds * 0.4536 * 1000 # Converts pounds to grams
+# Converts pounds to grams
+grams = pounds * 0.4536 * 1000
 
-total = ELEMENTS.map do |element|
+total = ELEMENTS.map do |element| # Gets how much the element is worth in you for each one
 	element.price * element.ammount * (grams/100)
 end.reduce(:+) # Added together
 
