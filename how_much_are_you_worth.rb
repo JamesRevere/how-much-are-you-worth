@@ -11,11 +11,12 @@ class Array
     end
 end
 
+# Need to update class
 class Element
     attr_reader :price # The price of the element
     attr_reader :ammount # What percentage of the element is in your body.
 
-	def initialize(price, ammount) # What hapens when the class is created
+	def initialize(price, ammount) # What happens when the class is created
 		@price = price
 		@ammount = ammount
 	end
@@ -25,7 +26,7 @@ class Element
 	end
 end
 
-
+# Need to retool to work with new class
 o = Element.new(0.30, 0.65)
 c = Element.new(2.40, 0.18)
 h = Element.new(12, 0.10)
@@ -44,12 +45,12 @@ if pounds == 0
 	pounds = gets.chomp.to_i
 end
 
+# Declares all the useless things that should be replaced
 elements = Hash.new
 price = {o: 0.30, c: 2.40, h: 12.00, n: 0.40, ca: 11.00, p: 4.00, k: 85.00, s: 0.25, na: 7.00, cl: 0.15}
 total = []
 
-grams = pounds * 0.4536 * 1000
-
+grams = pounds * 0.4536 * 1000 # Converts pounds to grams
 
 elements[:o] = o.quantity_init(grams)
 elements[:c] = c.quantity_init(grams)
