@@ -1,17 +1,6 @@
 # How Much Are You Worth?
 # Have you ever wondered how much you would sell for if you were split up into your individual elements? Well, now you can!
 
-class Array
-    def total # A way to get the total of an array's numbers
-        cost = 0
-        self.each do |value|
-            cost += value
-        end
-        cost
-    end
-end
-
-# Need to update class
 class Element
 	attr_reader :symbol
     attr_reader :price # The price of the element
@@ -23,12 +12,9 @@ class Element
         @price = price.to_f
         @ammount = ammount.to_f
 	end
-    
-	def quantity_init(grams) # Initalizes how much is in your body
-        grams * @ammount
-	end
 end
 
+# Sets up the elements
 ELEMENTS = [
     Element.new('O', 0.30, 0.65),
     Element.new('C', 2.40, 0.18),
@@ -52,8 +38,10 @@ end
 # Converts pounds to grams
 grams = pounds * 0.4536 * 1000
 
-total = ELEMENTS.map do |element| # Gets how much the element is worth in you for each one
+# Gets how much the element is worth in you for each one
+total = ELEMENTS.map do |element|
 	element.price * element.ammount * (grams/100)
 end.reduce(:+) # Added together
 
+# Puts the result
 puts "You are worth: $#{total.round(2)}"
